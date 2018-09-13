@@ -68,6 +68,18 @@ let idSelector model dispatch =
                         Button.Color IsPrimary
                         Button.Props [ OnClick(fun _ -> dispatch LoadPokemon) ] ]
                       [ str "Load Pokemon!" ] ] ] ]
+
+//anonymous functions - used below in maxIdSoFar
+//( fun arg1 arg2 -> arg1 + arg2 ) 10 20
+
+//iterate over a collection
+let maxIdSoFar (pokemon : Map<int, Pokemon>) =
+    pokemon
+    |> Map.toList
+    // |> List.map (fun (item1, item2) -> item1)
+    |> List.map fst
+    |> List.max
+
 let init _ =
     let model =
         { Loading = false
